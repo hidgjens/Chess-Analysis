@@ -32,7 +32,7 @@ containing millions of games.
 I have attempted to write a process which batches the games from a
 `.pgn` file and processes them using a processing pool.
 
-Records are gathered and stored in a partitions parquet structure.
+Records are gathered and stored in a partitioned parquet structure.
 
 To create plots from the records, I read the parquet data in batches 
 since I did not download enough RAM for my computer. The results
