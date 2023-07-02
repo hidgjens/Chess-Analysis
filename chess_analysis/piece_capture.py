@@ -803,7 +803,7 @@ def proc_file(
 
 def process_dir(
     data_dir: str,
-    limit: int | None = 1_000_000,
+    game_limit: int | None = 1_000_000,
     file_limit: int | None = None,
 ):
     """
@@ -813,10 +813,10 @@ def process_dir(
         Path to directory containing pgn files.
     :type data_dir:
         str
-    :param limit:
+    :param game_limit:
         Maximum number of games per pgn file to process,
         defaults to 2_000_000.
-    :type limit:
+    :type game_limit:
         int | None, optional
     :param file_limit:
         Maximum number of pgn files to process, defaults
@@ -824,6 +824,10 @@ def process_dir(
     :type file_limit:
         int | None, optional
     """
+    print(
+        f"Processing directory {data_dir} with game_limit={game_limit} "
+        f"and file_limit={file_limit}"
+    )
     # Search for pgn files in data_dir.
     pgn_files = [f for f in os.listdir(data_dir) if os.path.splitext(f)[1] == ".pgn"]
     print(f"Found {len(pgn_files)} .pgn file(s)")
@@ -837,7 +841,7 @@ def process_dir(
     for file in pgn_files:
         fullpath = os.path.join(data_dir, file)
         with Timer(file):
-            proc_file(fullpath, limit=limit)
+            proc_file(fullpath, limit=game_limit)
 
 
 if __name__ == "__main__":
@@ -864,7 +868,7 @@ if __name__ == "__main__":
         default="2_000_000",
         nargs="?",
         help="Maximum number of games to process per pgn file. Can be set to None.",
-        dest="gamelimit",
+        dest="game_limit",
     )
     parser.add_argument(
         "-F",
@@ -872,7 +876,7 @@ if __name__ == "__main__":
         default="None",
         nargs="?",
         help="Maximum number of pgn files to process.",
-        dest="filelimit",
+        dest="file_limit",
     )
     parsed = parser.parse_args(sys.argv[1:])
 
@@ -881,9 +885,9 @@ if __name__ == "__main__":
 
     # Maximum number of games to process per pgn file.
     if parsed.game_limit == "None":
-        limit = None
+        game_limit = None
     else:
-        limit = int(parsed.game_limit)
+        game_limit = int(parsed.game_limit)
 
     # Maximum number of pgn files to process.
     if parsed.file_limit == "None":
@@ -891,4 +895,4 @@ if __name__ == "__main__":
     else:
         file_limit = int(parsed.file_limit)
 
-    process_dir(data_dir=data_dir, limit=limit, file_limit=file_limit)
+    process_dir(data_dir=data_dir, game_limit=game_limit, file_limit=file_limit)
