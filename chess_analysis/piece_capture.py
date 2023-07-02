@@ -20,10 +20,7 @@ file, and the maximum number of files processed.
 
 Output data is stored in a parquet database to be processed by
 proc_pq.py.
-
-
 """
-
 from __future__ import annotations
 
 import os

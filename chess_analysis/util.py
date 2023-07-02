@@ -3,7 +3,10 @@
 :author: hidgjens
 :created: 2023/07/01
 :last modified: 2023/07/02
+
+Useful tools.
 """
+from __future__ import annotations
 
 import time
 from dataclasses import dataclass
