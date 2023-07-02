@@ -51,22 +51,22 @@ E.g., a bishop captured on C3 will record `C3`.
 
 
 #### All pieces
-![alt text](./example_plots/taken_at_all.png)
+<img src="./example_plots/taken_at_all.png" width="300">
 
 #### Pawns
-![alt text](./example_plots/taken_at_pawn.png)
+<img src="./example_plots/taken_at_pawn.png" width="300">
 
 #### Knight
-![alt text](./example_plots/taken_at_knight.png)
+<img src="./example_plots/taken_at_knight.png" width="300">
 
 #### Bishop
-![alt text](./example_plots/taken_at_bishop.png)
+<img src="./example_plots/taken_at_bishop.png" width="300">
 
 #### Rook
-![alt text](./example_plots/taken_at_rook.png)
+<img src="./example_plots/taken_at_rook.png" width="300">
 
 #### Queen
-![alt text](./example_plots/taken_at_queen.png)
+<img src="./example_plots/taken_at_queen.png" width="300">
 
 
 ### Where pieces make captures
@@ -75,25 +75,25 @@ Location on the board where pieces make captures.
 E.g., a bishop on C3 taking on D4 will record `D4`.
 
 #### All pieces
-![alt text](./example_plots/taking_at_all.png)
+<img src="./example_plots/taking_at_all.png" width="300">
 
 #### Pawns
-![alt text](./example_plots/taking_at_pawn.png)
+<img src="./example_plots/taking_at_pawn.png" width="300">
 
 #### Knight
-![alt text](./example_plots/taking_at_knight.png)
+<img src="./example_plots/taking_at_knight.png" width="300">
 
 #### Bishop
-![alt text](./example_plots/taking_at_bishop.png)
+<img src="./example_plots/taking_at_bishop.png" width="300">
 
 #### Rook
-![alt text](./example_plots/taking_at_rook.png)
+<img src="./example_plots/taking_at_rook.png" width="300">
 
 #### Queen
-![alt text](./example_plots/taking_at_queen.png)
+<img src="./example_plots/taking_at_queen.png" width="300">
 
 #### King
-![alt text](./example_plots/taking_at_king.png)
+<img src="./example_plots/taking_at_king.png" width="300">
 
 
 ### Where pieces make captures from
@@ -102,25 +102,25 @@ Location on the board where pieces make capturing moves from.
 E.g., a bishop on C3 taking on D4 will record `C3`.
 
 #### All pieces
-![alt text](./example_plots/taking_from_all.png)
+<img src="./example_plots/taking_from_all.png" width="300">
 
 #### Pawns
-![alt text](./example_plots/taking_from_pawn.png)
+<img src="./example_plots/taking_from_pawn.png" width="300">
 
 #### Knight
-![alt text](./example_plots/taking_from_knight.png)
+<img src="./example_plots/taking_from_knight.png" width="300">
 
 #### Bishop
-![alt text](./example_plots/taking_from_bishop.png)
+<img src="./example_plots/taking_from_bishop.png" width="300">
 
 #### Rook
-![alt text](./example_plots/taking_from_rook.png)
+<img src="./example_plots/taking_from_rook.png" width="300">
 
 #### Queen
-![alt text](./example_plots/taking_from_queen.png)
+<img src="./example_plots/taking_from_queen.png" width="300">
 
 #### King
-![alt text](./example_plots/taking_from_king.png)
+<img src="./example_plots/taking_from_king.png" width="300">
 
 ## Known issues
 - There's an error in choosing when to flip the board. This has been 
