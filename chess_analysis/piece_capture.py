@@ -721,7 +721,7 @@ def proc_file(
     *,
     limit: int | None = None,
     workers: int = _DEFAULT_WORKERS,
-    chunk_size: int = 200_000,
+    chunk_size: int = 500_000,
 ):
     """
     Process a pgn file of games.
@@ -805,6 +805,7 @@ def process_dir(
     data_dir: str,
     game_limit: int | None = 1_000_000,
     file_limit: int | None = None,
+    chunk_size: int = 500_000,
 ):
     """
     Process all pgn files in a directory.
@@ -823,6 +824,11 @@ def process_dir(
         to None.
     :type file_limit:
         int | None, optional
+    :param chunk_size:
+        Number of games to process at a time, defaults
+        to 500_000.
+    :type chunk_size:
+        int, optional
     """
     print(
         f"Processing directory {data_dir} with game_limit={game_limit} "
@@ -841,7 +847,11 @@ def process_dir(
     for file in pgn_files:
         fullpath = os.path.join(data_dir, file)
         with Timer(file):
-            proc_file(fullpath, limit=game_limit)
+            proc_file(
+                fullpath,
+                limit=game_limit,
+                chunk_size=chunk_size,
+            )
 
 
 if __name__ == "__main__":
@@ -878,6 +888,15 @@ if __name__ == "__main__":
         help="Maximum number of pgn files to process.",
         dest="file_limit",
     )
+    parser.add_argument(
+        "-C",
+        "--chunksize",
+        default=500_000,
+        type=int,
+        nargs="?",
+        help="Number of games to process at a time.",
+        dest="chunk_size",
+    )
     parsed = parser.parse_args(sys.argv[1:])
 
     # Source directory for pgn data.
@@ -895,4 +914,12 @@ if __name__ == "__main__":
     else:
         file_limit = int(parsed.file_limit)
 
-    process_dir(data_dir=data_dir, game_limit=game_limit, file_limit=file_limit)
+    # Number of games to process at a time.
+    chunk_size = parsed.chunk_size
+
+    process_dir(
+        data_dir=data_dir,
+        game_limit=game_limit,
+        file_limit=file_limit,
+        chunk_size=chunk_size,
+    )
