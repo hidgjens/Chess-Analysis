@@ -3,6 +3,15 @@
 :author: hidgjens
 :created: 2023/07/01
 :last modified: 2023/07/02
+
+Read capture records produced by `piece_capture.py` and
+generate summary plots showing aggregated results.
+
+This file looks at the locations where captures occured 
+and what pieces were involve.
+
+It produces heatmaps indicating the percentage of captures
+that happens on each square of the board.
 """
 from __future__ import annotations
 
@@ -19,7 +28,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
-from lah_util import Timer
 
 
 def plot_counts(

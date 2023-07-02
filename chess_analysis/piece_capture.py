@@ -3,6 +3,25 @@
 :author: hidgjens
 :created: 2023/07/01
 :last modified: 2023/07/02
+
+Analyses games from pgn files and records all captures made.
+
+usage: python piece_capture.py [-h] [-D [DATA_DIR]] [-G [GAMELIMIT]] [-F [FILELIMIT]]
+Use `python piece_capture.py --help` for full usage options. 
+
+
+The pgn files provided by Lichess are big files which contain
+a month's worth of ranked chess games.
+Due to their size, they need to be processed in batches.
+
+This script will process all pgn files found in a directory.
+Limits can be set for the maximum number of games processed per
+file, and the maximum number of files processed.
+
+Output data is stored in a parquet database to be processed by
+proc_pq.py.
+
+
 """
 
 from __future__ import annotations
@@ -23,8 +42,8 @@ from chess import Move
 from chess import piece_name
 from chess import square_name
 from chess.pgn import Game
-from lah_util import Timer
 from tqdm import tqdm
+from util import Timer
 
 # ======================
 # Create capture records
@@ -827,10 +846,11 @@ def process_dir(
 if __name__ == "__main__":
     # Create arg parser and parse arguments.
     import argparse
+    import os
     import sys
 
     parser = argparse.ArgumentParser(
-        prog="PGN piece capture",
+        prog=os.path.basename(__file__),
         description="Process pgn files to collect data on piece captures.",
     )
     parser.add_argument(
