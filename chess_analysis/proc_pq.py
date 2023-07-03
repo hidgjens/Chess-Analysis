@@ -123,22 +123,15 @@ class PlotConfig:
     desc: str
     """Description of this config."""
 
-    reverse: bool
+    reverse: bool = False
     """Whether to mirror the board when displaying."""
 
 
-# PLOT_CONFIGS: Final = [
-#     PlotConfig("piece", "square", "taken_at", reverse=False),
-#     PlotConfig("piece", "from_square", "taken_from", reverse=True),
-#     PlotConfig("capturing_piece", "square", "taking_at", reverse=False),
-#     PlotConfig("capturing_piece", "from_square", "taking_from", reverse=False),
-# ]
-# TODO temp fix to get around bug in source data.
 PLOT_CONFIGS: Final = [
-    PlotConfig("piece", "square", "taken_at", reverse=True),
-    PlotConfig("piece", "from_square", "taken_from", reverse=False),
-    PlotConfig("capturing_piece", "square", "taking_at", reverse=False),
-    PlotConfig("capturing_piece", "from_square", "taking_from", reverse=False),
+    PlotConfig("captured_piece", "captured_at_square", "taken_at"),
+    PlotConfig("captured_piece", "captured_from_square", "taken_from"),
+    PlotConfig("capturing_piece", "captured_at_square_mirrored", "taking_at"),
+    PlotConfig("capturing_piece", "captured_from_square_mirrored", "taking_from"),
 ]
 """List of plot configurations to run."""
 
@@ -153,10 +146,12 @@ PIECES: Final = [
 """List of piece names."""
 
 COLUMNS: Final = [
-    "piece",
+    "captured_piece",
     "capturing_piece",
-    "square",
-    "from_square",
+    "captured_at_square",
+    "captured_from_square",
+    "captured_at_square_mirrored",
+    "captured_from_square_mirrored",
 ]
 """List of columns to read from the parquet files."""
 
@@ -255,7 +250,7 @@ def main(norm: bool = True):
     os.makedirs("plots", exist_ok=True)
 
     # Use pyarrow to detect the parquet dataset.
-    path = "data\output_v4.parquet"
+    path = "data\output_v5.parquet"
     dataset = pq.ParquetDataset(path)
     print(f"Loaded {len(dataset.files)} files")
 

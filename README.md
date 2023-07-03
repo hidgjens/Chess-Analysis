@@ -68,6 +68,29 @@ E.g., a bishop captured on C3 will record `C3`.
 #### Queen
 <img src="./example_plots/taken_at_queen.png" width="300">
 
+### Pieces captured from
+
+Location on the board where the capturing piece moved from.
+E.g., a bishop captured on C3 from a piece on D4 will record `D4`.
+
+#### All pieces
+<img src="./example_plots/taken_from_all.png" width="300">
+
+#### Pawns
+<img src="./example_plots/taken_from_pawn.png" width="300">
+
+#### Knight
+<img src="./example_plots/taken_from_knight.png" width="300">
+
+#### Bishop
+<img src="./example_plots/taken_from_bishop.png" width="300">
+
+#### Rook
+<img src="./example_plots/taken_from_rook.png" width="300">
+
+#### Queen
+<img src="./example_plots/taken_from_queen.png" width="300">
+
 
 ### Where pieces make captures
 
@@ -122,6 +145,3 @@ E.g., a bishop on C3 taking on D4 will record `C3`.
 #### King
 <img src="./example_plots/taking_from_king.png" width="300">
 
-## Known issues
-- There's an error in choosing when to flip the board. This has been 
-  worked around temporarily by mirroring the final results.
